@@ -1,0 +1,43 @@
+form {
+    border: thin solid rgb(27, 238, 157);
+    background-color: #f8f5f5;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+img {
+    width: 75px;
+    border-radius: 20px;
+    border: thin solid rgb(27, 238, 157);
+}
+.github-profile {
+    margin: 1rem;
+}
+.info {
+    display: inline-block;
+    margin-left: 12px;
+}
+.name {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+button {
+    color: aliceblue;
+    border: thin solid cyan;
+    margin: 20px;
+    background-color: darkblue;
+}
+body {
+    background-color: black;
+}
+.titulo {
+    margin: 10px;
+}
