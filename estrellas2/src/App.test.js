@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import StarMatch from './StarMatch';
+import StarMatch  from './Aplicacion';
 
 test('renders learn react link', () => {
   render(<StarMatch />);

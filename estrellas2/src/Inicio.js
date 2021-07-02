@@ -1,32 +1,51 @@
 import React from 'react';
 import { useState } from 'react';
-import { Juego } from './componentes/Juego';
-import { Sesion } from './componentes/Sesion';
-import { Usuarios } from './componentes/Usuarios';
-import './css/App.css';
+import { Juego } from './components/Juego';
+import { Sesion } from './components/Sesion';
+import './App.css';
+import { Usuarios } from './components/Usuarios';
+import { ListaDeUsuario } from './components/ListaDeUsuario';
 
 
 const Inicio = () => {
   const [gameId, setGameId] = useState(1);
-  const [login, setLogin] = useState(false)
+  const [logeado, setLogeado] = useState(false)
+  
   const [nuevoJugador, setNuevoJugador] = useState(Usuarios)
+  
+  const [nuevaEstrella, setNuevaEstrella] = useState(0)
 
-  const añadirUsuario = (jugador) =>{
-   setNuevoJugador([...Usuarios,jugador])
-   setLogin(true)
+  const añadirJugador = (jugador) => {
+    setNuevoJugador([...nuevoJugador, jugador])
+    //console.log(nuevoJugador);
+    setLogeado(true)
   }
-  return (
-    <>
+  const añadirEstrellas = (cantidad) =>{
+    setNuevaEstrella(cantidad)
+  }
+  return( 
+
+  <>
     {
-      login === true ?
-      (
-        <Juego key={gameId} startNewGame={() => setGameId(gameId + 1)} 
-        nuevoJugador={nuevoJugador}/>
+      logeado === true ? (
+        <Juego key={gameId} 
+        startNewGame={() => setGameId(gameId + 1)} 
+        nuevoJugador= {nuevoJugador} 
+        estrella ={nuevaEstrella}
+        setLogeado={setLogeado}
+        onSubmit={añadirJugador}/>
+      
       ) :(
-        <Sesion setLogin={setLogin}  onSubmited={añadirUsuario}/>
-      )
-    }  
-    </>
+      <Sesion handleSubmited = {añadirJugador}
+              handleStars = {añadirEstrellas}
+      ></Sesion>
+    ) 
+  }
+  <div>
+  <ListaDeUsuario nuevoJugador = {nuevoJugador}></ListaDeUsuario>
+  </div>
+  </>
+  
   );
 }
 
@@ -37,5 +56,8 @@ export const colors = {
   wrong: 'lightcoral',
   candidate: 'deepskyblue',
 };
+
+
+
 
 export default Inicio;
